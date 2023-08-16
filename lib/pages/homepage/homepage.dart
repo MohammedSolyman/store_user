@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:store_user/pages/homepage/homepage_components/homepage_componenets.dart';
+import 'package:store_user/pages/homepage/homepage_components/latest_products_block.dart';
+import 'package:store_user/pages/homepage/homepage_components/sale_block.dart';
+import 'package:store_user/pages/homepage/homepage_components/scrolling_images.dart';
 
-class Homepage extends StatelessWidget {
-  const Homepage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Column(
-      children: [
-        MyScrollingPages(),
-      ],
-    ));
+    return const Column(
+      children: [MyScrollingPages(), SaleBlock(), LatestProductsBLock()],
+    );
   }
 }

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store_user/models/scrolling_images_model.dart';
+import 'package:store_user/models/scrolling/scrolling_images_model.dart';
 
 class ScrollingImagesController extends GetxController {
   Rx<ScrollingImagesModel> scrollingImagesModel = ScrollingImagesModel().obs;
@@ -50,6 +50,7 @@ class ScrollingImagesController extends GetxController {
 
   @override
   void onClose() {
+    print('-----------------dispose called ---------------------------------');
     super.onClose();
     _stopScrolling();
   }

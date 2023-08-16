@@ -32,7 +32,7 @@ class MyImages extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.35,
+        height: MediaQuery.of(context).size.height * 0.30,
         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
         child: PageView.builder(
           controller: myController.scrollingImagesModel.value.pageController,
