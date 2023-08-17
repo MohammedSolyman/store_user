@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:store_user/pages/cart_page/cart_page.dart';
+import 'package:store_user/pages/categories_page/categories_page.dart';
 import 'package:store_user/pages/homepage/homepage.dart';
+import 'package:store_user/pages/profile_page/profile_page.dart';
 
 class MyTabBarView extends StatelessWidget {
   const MyTabBarView({super.key});
@@ -9,9 +12,9 @@ class MyTabBarView extends StatelessWidget {
     return const Expanded(
       child: TabBarView(children: [
         HomePage(),
-        Text('tab bar view 2'),
-        Text('tab bar view 3'),
-        Text('tab bar view 4'),
+        CategoriesPage(),
+        CartPage(),
+        ProfilePage(),
       ]),
     );
   }

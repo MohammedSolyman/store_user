@@ -7,9 +7,17 @@ import 'package:store_user/controllers/my_controller.dart';
 import 'package:store_user/pages/main_gate/main_gate.dart';
 
 /*
-main template with tabbarview was created, 
-homepage was added
-theming was added
+
+
+scrolling issue was fixed, categories page was created, empty cart page was created, initial profile page was created, theming was applid
+
+
+
+
+
+
+https://github.com/MohammedSolyman/store_user.git
+
 */
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,23 +33,19 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      themeMode: myController.themeModel.value.themeMode,
-      theme: MyThemeData.light,
-      darkTheme: MyThemeData.dark,
-      initialRoute: '/maingate',
-      getPages: [
-        GetPage(name: '/maingate', page: () => const MainGate()),
-        // GetPage(name: '/test', page: () => Test()),
+    return Obx(() => GetMaterialApp(
+          themeMode: myController.themeModel.value.themeMode,
+          theme: MyThemeData.light,
+          darkTheme: MyThemeData.dark,
+          initialRoute: '/maingate',
+          getPages: [
+            GetPage(name: '/maingate', page: () => const MainGate()),
 
-        // GetPage(name: '/allproducts', page: () => AllProducts()),
-        // GetPage(name: '/categories', page: () => Categories()),
-        // GetPage(name: '/cart', page: () => Cart()),
-        // GetPage(name: '/signin', page: () => SignIn()),
-        // GetPage(name: '/profile', page: () => Profile()),
-        // GetPage(name: '/onsale', page: () => onSale()),
-        // GetPage(name: '/addproduct', page: () => AddProduct()),
-      ],
-    );
+            // GetPage(name: '/allproducts', page: () => AllProducts()),
+            // GetPage(name: '/signin', page: () => SignIn()),
+            // GetPage(name: '/onsale', page: () => onSale()),
+            // GetPage(name: '/addproduct', page: () => AddProduct()),
+          ],
+        ));
   }
 }

@@ -11,9 +11,11 @@ class MyThemeData {
       textTheme: const TextTheme(
           bodyLarge: TextStyle(fontSize: 16, color: MyColors.text1),
           headlineLarge: TextStyle(
-              fontSize: 20,
-              color: MyColors.text1,
-              fontWeight: FontWeight.bold)),
+              fontSize: 20, color: MyColors.text1, fontWeight: FontWeight.bold),
+          titleLarge: TextStyle(
+            fontSize: 30,
+            color: MyColors.text1,
+          )),
       primaryColor: MyColors.background1);
 
   static final ThemeData dark = ThemeData(
@@ -25,8 +27,10 @@ class MyThemeData {
       textTheme: const TextTheme(
           bodyLarge: TextStyle(fontSize: 16, color: MyColors.text2),
           headlineLarge: TextStyle(
-              fontSize: 20,
-              color: MyColors.text2,
-              fontWeight: FontWeight.bold)),
+              fontSize: 20, color: MyColors.text2, fontWeight: FontWeight.bold),
+          titleLarge: TextStyle(
+            fontSize: 30,
+            color: MyColors.text2,
+          )),
       primaryColor: MyColors.background2);
 }

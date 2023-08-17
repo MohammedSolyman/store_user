@@ -7,8 +7,9 @@ class MainGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      body: const Center(
           child: DefaultTabController(
         length: 4,
         child: Column(

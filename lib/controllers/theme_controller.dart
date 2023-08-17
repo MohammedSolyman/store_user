@@ -5,7 +5,7 @@ import 'package:store_user/models/theme/theme_model.dart';
 
 class ThemeController extends ProductsController {
   Rx<ThemeModel> themeModel = ThemeModel().obs;
-  static ThemeController themeInstance = Get.find<ThemeController>();
+  //static ThemeController themeInstance = Get.find<ThemeController>();
 
   void toggleMode(bool x) {
     themeModel.update((val) {

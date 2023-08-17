@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:store_user/controllers/scrolling_images_controller.dart';
+import 'package:store_user/models/category/category.dart';
 import 'package:store_user/models/product/product_model.dart';
 import 'package:store_user/models/product/products_data_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductsController extends ScrollingImagesController {
   Rx<ProductsDataModel> productsDataModel = ProductsDataModel().obs;
+  Rx<CategoriesModel> categoriesModel = CategoriesModel().obs;
 
   _getAllProducts() async {
     FirebaseFirestore instance = FirebaseFirestore.instance;
@@ -15,11 +17,11 @@ class ProductsController extends ScrollingImagesController {
     List<QueryDocumentSnapshot<Map<String, dynamic>>> myList = querySS.docs;
     List<ProductModel> x = [];
 
-    myList.forEach((element) {
+    for (var element in myList) {
       Map<String, dynamic> myMap = element.data();
       ProductModel myProduct = ProductModel.fromMap(myMap);
       x.add(myProduct);
-    });
+    }
 
     productsDataModel.update((val) {
       val!.allProducts = x;
@@ -35,8 +37,8 @@ class ProductsController extends ScrollingImagesController {
     super.onInit();
     await _getAllProducts();
     print('---------------------');
-    productsDataModel.value.allProducts.forEach((element) {
+    for (var element in productsDataModel.value.allProducts) {
       print(element.productName);
-    });
+    }
   }
 }

@@ -4,7 +4,7 @@ class ProductModel {
   String productName = "";
   int productPrice = 0;
   String productUnit = Unit.kilo;
-  String productCategory = Category.grains;
+  String productCategory = MyCategories.categoryList[0].categoryName;
   bool isOnSale = false;
   String productImage = "";
   int createdOn = 0;

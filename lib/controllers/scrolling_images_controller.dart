@@ -42,6 +42,11 @@ class ScrollingImagesController extends GetxController {
     scrollingImagesModel.value.timer!.cancel();
   }
 
+  restartScrolling() {
+    _stopScrolling();
+    _startScrolling();
+  }
+
   @override
   void onInit() {
     super.onInit();
