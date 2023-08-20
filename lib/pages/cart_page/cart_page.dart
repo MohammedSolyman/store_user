@@ -7,7 +7,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (myController.purchaseDataModel.value.myPurchases.isEmpty) {
+    if (myController.purchaseModel.value.myPurchases.isEmpty) {
       return Column(
         children: [
           SizedBox(

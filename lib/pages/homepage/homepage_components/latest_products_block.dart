@@ -18,7 +18,7 @@ class LatestProductsBLock extends StatelessWidget {
           ],
         ),
         Obx(() {
-          if (myController.productsDataModel.value.allProducts.isEmpty) {
+          if (myController.productsModel.value.allProducts.isEmpty) {
             return const MyText('there is no products');
           } else {
             return const Column(

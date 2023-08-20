@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/constants/constant.dart';
 import 'package:store_user/global_widgets/products/product_template.dart';
-import 'package:store_user/models/product/product_model.dart';
+import 'package:store_user/data_types/product/product.dart';
 
 class ProductsTemplate extends StatelessWidget {
   const ProductsTemplate(
       {required this.countPerLine, required this.dataList, super.key});
 
   final int countPerLine;
-  final List<ProductModel> dataList;
+  final List<Product> dataList;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ProductsTemplate extends StatelessWidget {
                   mainAxisExtent: 175,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  ProductModel myProduct = dataList[index];
+                  Product myProduct = dataList[index];
                   return ProductTemplate(myProduct);
                 }),
           );
@@ -42,7 +42,7 @@ class SaleProductsTemplate extends StatelessWidget {
     return Obx(() {
       return ProductsTemplate(
         countPerLine: countPerLine,
-        dataList: myController.productsDataModel.value.onSaleProducts,
+        dataList: myController.productsModel.value.onSaleProducts,
       );
     });
   }
@@ -57,7 +57,7 @@ class LatestProductsTemplate extends StatelessWidget {
     return Obx(() {
       return ProductsTemplate(
         countPerLine: countPerLine,
-        dataList: myController.productsDataModel.value.latestProducts,
+        dataList: myController.productsModel.value.latestProducts,
       );
     });
   }

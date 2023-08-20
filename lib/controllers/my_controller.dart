@@ -3,14 +3,29 @@ ScrollingImagesController
 ProductsController
 ThemeController
 PurchaseController
+NavigationController
+Authentication
+SignInPageController
+SignUpPageController
+
 
 
 MyController
 */
 
 import 'package:get/get.dart';
-import 'package:store_user/controllers/purchase_controller.dart';
 
-class MyController extends PurchaseController {
+import 'package:store_user/controllers/sign_up_page_controller.dart';
+
+class MyController extends SignUpPageController {
   static MyController instance = Get.find<MyController>();
+
+  @override
+  void onInit() async {
+    super.onInit();
+
+    updateTheme();
+
+    await getAllProducts();
+  }
 }

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:store_user/models/product/product_model.dart';
+import 'package:store_user/constants/constant.dart';
+import 'package:store_user/data_types/product/product.dart';
 
 class ProductTemplate extends StatelessWidget {
   const ProductTemplate(this.myProduct, {super.key});
 
-  final ProductModel myProduct;
+  final Product myProduct;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () {
+        myController.goToProductTetails(myProduct);
+      },
       child: Container(
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
@@ -56,50 +60,14 @@ class ProductTemplate extends StatelessWidget {
                   ]),
                   borderRadius: BorderRadius.circular(15),
                 )),
-            //  const Positioned(right: 5, top: 5, child: MyPopupMenuButton()),
+            Positioned(
+                top: 5,
+                right: 5,
+                child: IconButton(
+                    onPressed: () {}, icon: const Icon(Icons.favorite)))
           ],
         ),
       ),
     );
   }
 }
-
-// class MyPopupMenuButton extends StatelessWidget {
-//   const MyPopupMenuButton({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return PopupMenuButton(
-//       itemBuilder: (context) {
-//         PopupMenuItem<int> x = const PopupMenuItem(
-//             value: 0,
-//             child: Row(
-//               children: [
-//                 Icon(Icons.add),
-//                 SizedBox(
-//                   width: 5,
-//                 ),
-//                 Text('add product')
-//               ],
-//             ));
-//         PopupMenuItem<int> y = const PopupMenuItem(
-//             value: 1,
-//             child: Row(
-//               children: [
-//                 Icon(Icons.edit),
-//                 SizedBox(
-//                   width: 5,
-//                 ),
-//                 Text('edit product')
-//               ],
-//             ));
-//         return [x, y];
-//       },
-//       onSelected: (value) {
-//         myController.popupFunction(value, context);
-//       },
-//     );
-//   }
-// }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:store_user/global_widgets/texts/my_title.dart';
-import 'package:store_user/models/category/category.dart';
+import 'package:store_user/data_types/category/category.dart';
 
 class CategoryTemplate extends StatelessWidget {
-  const CategoryTemplate({required this.categoryModel, super.key});
+  const CategoryTemplate({required this.category, super.key});
 
-  final CategoryModel categoryModel;
+  final Category category;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +30,8 @@ class CategoryTemplate extends StatelessWidget {
                     SizedBox(
                         width: MediaQuery.of(context).size.width * 0.35,
                         height: MediaQuery.of(context).size.height * 0.18,
-                        child: Image.asset(categoryModel.categoryImage)),
-                    MyTitle(categoryModel.categoryName)
+                        child: Image.asset(category.categoryImage)),
+                    MyTitle(category.categoryName)
                   ],
                 ),
               ),

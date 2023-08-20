@@ -7,6 +7,13 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CategoriesTemplate(dataList: MyCategories.categoryList);
+    return Column(
+      children: [
+        const SizedBox(
+          height: 35,
+        ),
+        CategoriesTemplate(dataList: MyCategories.categoryList)
+      ],
+    );
   }
 }

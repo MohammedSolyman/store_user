@@ -42,7 +42,10 @@ class ProfileTiles extends StatelessWidget {
               iconData: Icons.person, title: 'wishlist', function: () {}),
           ProfileTile(iconData: Icons.person, title: 'viewed', function: () {}),
           ProfileTile(
-              iconData: Icons.person, title: 'sign in', function: () {}),
+              iconData: Icons.person,
+              title: 'sign in',
+              // function: () {}),
+              function: myController.goToSignIn),
           const ThemeTile()
         ],
       ),

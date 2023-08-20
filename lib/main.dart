@@ -8,13 +8,7 @@ import 'package:store_user/pages/main_gate/main_gate.dart';
 
 /*
 
-
-scrolling issue was fixed, categories page was created, empty cart page was created, initial profile page was created, theming was applid
-
-
-
-
-
+storage of themeMode was added, singup and signin pages were created with their functions
 
 https://github.com/MohammedSolyman/store_user.git
 
@@ -22,7 +16,6 @@ https://github.com/MohammedSolyman/store_user.git
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   Get.put(MyController());
 
   runApp(const MainApp());
@@ -40,11 +33,6 @@ class MainApp extends StatelessWidget {
           initialRoute: '/maingate',
           getPages: [
             GetPage(name: '/maingate', page: () => const MainGate()),
-
-            // GetPage(name: '/allproducts', page: () => AllProducts()),
-            // GetPage(name: '/signin', page: () => SignIn()),
-            // GetPage(name: '/onsale', page: () => onSale()),
-            // GetPage(name: '/addproduct', page: () => AddProduct()),
           ],
         ));
   }

@@ -1,6 +1,6 @@
 import 'package:store_user/constants/constant.dart';
 
-class ProductModel {
+class Product {
   String productName = "";
   int productPrice = 0;
   String productUnit = Unit.kilo;
@@ -10,7 +10,7 @@ class ProductModel {
   int createdOn = 0;
   int lastModifiedOn = 0;
 
-  ProductModel(
+  Product(
       {required this.productName,
       required this.productPrice,
       required this.productUnit,
@@ -20,7 +20,7 @@ class ProductModel {
       required this.createdOn,
       required this.lastModifiedOn});
 
-  ProductModel.fromMap(Map<String, dynamic> myMap) {
+  Product.fromMap(Map<String, dynamic> myMap) {
     productName = myMap['productName'];
     productPrice = myMap['productPrice'];
     productUnit = myMap['productUnit'];

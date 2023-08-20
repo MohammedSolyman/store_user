@@ -1,5 +1,5 @@
 import 'package:store_user/controllers/my_controller.dart';
-import 'package:store_user/models/category/category.dart';
+import 'package:store_user/data_types/category/category.dart';
 
 MyController myController = MyController.instance;
 
@@ -17,16 +17,11 @@ class Unit {
 
 //categories data
 class MyCategories {
-  static final CategoryModel _grains = CategoryModel('grains', 'assets/store.png');
-  static final CategoryModel _fruits = CategoryModel('fruits', 'assets/store.png');
-  static final CategoryModel _dairy = CategoryModel('dairy', 'assets/store.png');
-  static final CategoryModel _vegetables =
-      CategoryModel('vegetables', 'assets/store.png');
+  static final Category _grains = Category('grains', 'assets/store.png');
+  static final Category _fruits = Category('fruits', 'assets/store.png');
+  static final Category _dairy = Category('dairy', 'assets/store.png');
+  static final Category _vegetables =
+      Category('vegetables', 'assets/store.png');
 
-  static List<CategoryModel> categoryList = [
-    _dairy,
-    _fruits,
-    _vegetables,
-    _grains
-  ];
+  static List<Category> categoryList = [_dairy, _fruits, _vegetables, _grains];
 }

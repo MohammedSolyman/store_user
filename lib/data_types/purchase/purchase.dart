@@ -2,14 +2,14 @@
 
 import 'package:store_user/constants/constant.dart';
 
-class PurchaseModel {
+class Purchase {
   String userName = '';
   String productName = '';
   int quantity = 0;
   String measureUnit = Unit.kilo;
   double totalPrice = 0;
 
-  PurchaseModel({
+  Purchase({
     required this.userName,
     required this.productName,
     required this.quantity,

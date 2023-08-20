@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store_user/models/scrolling/scrolling_images_model.dart';
+import 'package:store_user/models/scrolling_images_model.dart';
 
 class ScrollingImagesController extends GetxController {
   Rx<ScrollingImagesModel> scrollingImagesModel = ScrollingImagesModel().obs;
@@ -30,16 +30,21 @@ class ScrollingImagesController extends GetxController {
     int y = 10;
     int z;
 
-    scrollingImagesModel.value.timer =
-        Timer.periodic(const Duration(seconds: 2), (timer) {
-      z = y % x;
-      scrollingImagesModel.value.pageController.jumpToPage(z);
-      y++;
+    scrollingImagesModel.update((val) {
+      val!.timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+        z = y % x;
+        scrollingImagesModel.value.pageController.jumpToPage(z);
+        y++;
+      });
     });
   }
 
   _stopScrolling() {
-    scrollingImagesModel.value.timer!.cancel();
+    if (scrollingImagesModel.value.timer != null) {
+      scrollingImagesModel.update((val) {
+        val!.timer!.cancel();
+      });
+    }
   }
 
   restartScrolling() {
@@ -53,10 +58,10 @@ class ScrollingImagesController extends GetxController {
     _startScrolling();
   }
 
-  @override
-  void onClose() {
-    print('-----------------dispose called ---------------------------------');
-    super.onClose();
-    _stopScrolling();
-  }
+  // @override
+  // void onClose() {
+  //   print('-----------------dispose called ---------------------------------');
+  //   super.onClose();
+  //   _stopScrolling();
+  // }
 }
