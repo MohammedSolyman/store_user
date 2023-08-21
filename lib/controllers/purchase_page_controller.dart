@@ -8,10 +8,11 @@ import 'package:store_user/global_widgets/dialoges/dialoges.dart';
 import 'package:store_user/models/product_details_page_model.dart';
 
 class ProductDetailPageController extends SignUpPageController {
-  Rx<ProductDetailsPageModel> purchasePageModel = ProductDetailsPageModel().obs;
+  Rx<ProductDetailsPageModel> productDetailsPageModel =
+      ProductDetailsPageModel().obs;
 
   increaseFunc(int price) {
-    purchasePageModel.update((val) {
+    productDetailsPageModel.update((val) {
       val!.amount = val.amount + 1;
 
       val.totalPrice = (val.amount * price).toDouble();
@@ -19,11 +20,24 @@ class ProductDetailPageController extends SignUpPageController {
   }
 
   decreaseFunc(int price) {
-    purchasePageModel.update((val) {
+    productDetailsPageModel.update((val) {
       if (val!.amount > 0) {
         val.amount = val.amount - 1;
         val.totalPrice = (val.amount * price).toDouble();
       }
+    });
+  }
+
+  _clearFunc() {
+    productDetailsPageModel.update((val) {
+      val!.amount = 0;
+      val.totalPrice = 0;
+    });
+  }
+
+  updateGrandPrice() {
+    productDetailsPageModel.update((val) {
+      val!.grandPrice = val.grandPrice + val.totalPrice;
     });
   }
 
@@ -36,18 +50,23 @@ class ProductDetailPageController extends SignUpPageController {
           measureUnit: product.productUnit,
           productName: product.productName,
           purchaseTime: now,
-          quantity: purchasePageModel.value.amount,
-          totalPrice: purchasePageModel.value.totalPrice,
-          userId: userId);
+          quantity: productDetailsPageModel.value.amount,
+          totalPrice: productDetailsPageModel.value.totalPrice,
+          price: product.productPrice.toDouble(),
+          userId: userId,
+          productImage: product.productImage);
 
+      updateGrandPrice();
       addToPurchaseList(purchase);
       goToCartPage();
+      _clearFunc();
     } else {
       showMyDialoge(
           context: context,
           col: Colors.orange,
           title: 'sorry',
           content: 'sign in first to be able to add to your cart');
+      _clearFunc();
     }
   }
 }

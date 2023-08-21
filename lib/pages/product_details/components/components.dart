@@ -23,18 +23,15 @@ class Total extends StatelessWidget {
           children: [
             const MyBigText('total'),
             Obx(() {
-              return MyBigText(
-                  myController.purchasePageModel.value.totalPrice.toString());
+              return MyBigText(myController
+                  .productDetailsPageModel.value.totalPrice
+                  .toString());
             }),
           ],
         ),
         ElevatedButton(
             onPressed: () {
               myController.addToCartFunc(context, product);
-
-              print(
-                  'purchase--------------purchase--------------purchase--------------purchase--------------purchase--------------');
-              print(myController.purchaseModel.value.myPurchases.length);
             },
             child: const Text('add to cart'))
       ],
@@ -71,7 +68,7 @@ class Amount extends StatelessWidget {
         ),
         Obx(() {
           return MyBigText(
-              myController.purchasePageModel.value.amount.toString());
+              myController.productDetailsPageModel.value.amount.toString());
         }),
         const SizedBox(
           width: 10,

@@ -12,11 +12,12 @@ class MyScrollingPages extends StatelessWidget {
       child: Stack(
         children: [
           const MyImages(),
-          Positioned(
-              bottom: 5,
-              left: (MediaQuery.of(context).size.width - 250) * 0.5,
-              width: 250,
-              child: const MyDots())
+          // Positioned(
+          //     bottom: 5,
+          //     left: (MediaQuery.of(context).size.width - 250) * 0.5,
+          //     width: 250,
+          //     child: const MyDots()
+          //     )
         ],
       ),
     );

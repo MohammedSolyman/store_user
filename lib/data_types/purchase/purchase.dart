@@ -8,7 +8,9 @@ class Purchase {
   int quantity = 0;
   String measureUnit = Unit.kilo;
   double totalPrice = 0;
+  double price = 0;
   int purchaseTime = 0;
+  String productImage = '';
 
   Purchase({
     required this.userId,
@@ -16,6 +18,8 @@ class Purchase {
     required this.quantity,
     required this.measureUnit,
     required this.totalPrice,
+    required this.price,
     required this.purchaseTime,
+    required this.productImage,
   });
 }
