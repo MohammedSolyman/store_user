@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store_user/controllers/authentication.dart';
-import 'package:store_user/models/sign_in_model.dart';
+import 'package:store_user/controllers/authentication_controller.dart';
+import 'package:store_user/models/sign_in__page_model.dart';
 
 class SignInPageController extends Authentication {
   Rx<SignInModel> signInModel = SignInModel().obs;

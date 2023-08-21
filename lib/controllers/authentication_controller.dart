@@ -4,10 +4,27 @@ import 'package:get/get.dart';
 import 'package:store_user/controllers/navigation_controller.dart';
 import 'package:store_user/global_widgets/dialoges/dialoges.dart';
 import 'package:store_user/global_widgets/dialoges/waiting.dart';
+import 'package:store_user/models/authentication_model.dart';
 import 'package:store_user/pages/sign_in_page/sign_in_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class Authentication extends NavigationController {
+  Rx<AuthenticationModel> authenticationModel = AuthenticationModel().obs;
+
+  updateCurrentUser() {
+    FirebaseAuth instance = FirebaseAuth.instance;
+    User? currentUser = instance.currentUser;
+
+    authenticationModel.update((val) {
+      if (currentUser != null) {
+        String? userName = currentUser.displayName;
+        val!.currentUserName = userName!;
+      } else {
+        val!.currentUserName = 'guest';
+      }
+    });
+  }
+
   signUpEmail({
     required BuildContext context,
     required String userName,
@@ -102,6 +119,8 @@ class Authentication extends NavigationController {
             content: 'enter the correct pasword');
       }
     }
+
+    updateCurrentUser();
   }
 
   _sendVerificationEmail() {
@@ -111,6 +130,7 @@ class Authentication extends NavigationController {
 
   signOut() async {
     await FirebaseAuth.instance.signOut();
+    updateCurrentUser();
   }
 
   Future<UserCredential> signInGoogle() async {
@@ -128,6 +148,12 @@ class Authentication extends NavigationController {
     );
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+
+    updateCurrentUser();
+
+    return userCredential;
   }
 }

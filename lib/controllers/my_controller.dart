@@ -24,8 +24,9 @@ class MyController extends SignUpPageController {
   void onInit() async {
     super.onInit();
 
-    updateTheme();
+    onInitTheme();
 
     await getAllProducts();
+    updateCurrentUser();
   }
 }

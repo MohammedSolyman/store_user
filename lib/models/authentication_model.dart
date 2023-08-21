@@ -1,1 +1,3 @@
-class AuthenticationModel {}
+class AuthenticationModel {
+  String currentUserName = '';
+}

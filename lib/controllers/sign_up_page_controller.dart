@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/controllers/sign_in_page_controller.dart';
-import 'package:store_user/models/sign_up_model.dart';
+import 'package:store_user/models/sign_up_page_model.dart';
 
 class SignUpPageController extends SignInPageController {
   Rx<SignUpModel> signUpModel = SignUpModel().obs;

@@ -5,4 +5,5 @@ class ProductsModel {
   List<Product> onSaleProducts = [];
   List<Product> latestProducts = [];
   List<Product> history = [];
+  List<Product> likedProducts = [];
 }

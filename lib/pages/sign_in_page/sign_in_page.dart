@@ -28,6 +28,7 @@ class SignInPage extends StatelessWidget {
                     controller: myController.signInModel.value.tecEmail),
                 const MySizedBox(),
                 MyForm(
+                    isObsecure: true,
                     label: 'password',
                     controller: myController.signInModel.value.tecPassword),
                 const MySizedBox(),

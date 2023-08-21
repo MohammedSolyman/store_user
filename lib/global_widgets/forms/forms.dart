@@ -10,17 +10,24 @@ OutlineInputBorder myBorder(BuildContext context, double width, [Color? col]) {
 }
 
 class MyForm extends StatelessWidget {
-  const MyForm({required this.controller, required this.label, super.key});
+  const MyForm(
+      {required this.controller,
+      required this.label,
+      this.isObsecure,
+      super.key});
 
   final TextEditingController controller;
   final String label;
-
+  final bool? isObsecure;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      obscureText: isObsecure == true ? true : false,
+      style: Theme.of(context).textTheme.bodyLarge,
       decoration: InputDecoration(
         labelText: label,
+        labelStyle: Theme.of(context).textTheme.bodyLarge,
         enabledBorder: myBorder(context, 2),
         focusedBorder: myBorder(context, 5),
         focusedErrorBorder: myBorder(context, 5, Colors.red),

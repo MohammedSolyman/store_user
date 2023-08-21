@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:store_user/Theming/my_themes.dart';
 import 'package:store_user/constants/constant.dart';
 import 'package:store_user/controllers/my_controller.dart';
@@ -8,7 +9,7 @@ import 'package:store_user/pages/main_gate/main_gate.dart';
 
 /*
 
-storage of themeMode was added, singup and signin pages were created with their functions
+sharedpreference was replaced with Get storage, welcome tile was fixed, forms theming were inhanced
 
 https://github.com/MohammedSolyman/store_user.git
 
@@ -16,6 +17,7 @@ https://github.com/MohammedSolyman/store_user.git
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await GetStorage.init();
   Get.put(MyController());
 
   runApp(const MainApp());
