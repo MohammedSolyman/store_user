@@ -22,10 +22,10 @@ class ProductDetails extends StatelessWidget {
               const MySizedBox(),
               Price(product: product),
               const MySizedBox(),
-              const Amount(),
+              Amount(product.productPrice),
             ],
           ),
-          const Total()
+          Total(product)
         ],
       ),
     );

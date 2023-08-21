@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/global_widgets/category/categories_template.dart';
+import 'package:store_user/pages/categories_page/components/categories_template.dart';
 
 class CategoriesPage extends StatelessWidget {
   const CategoriesPage({super.key});

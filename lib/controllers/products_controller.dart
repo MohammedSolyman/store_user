@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:store_user/controllers/scrolling_images_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:store_user/data_types/category/category.dart';
 import 'package:store_user/data_types/product/product.dart';
 import 'package:store_user/models/products_model.dart';
 
@@ -32,9 +33,11 @@ class ProductsController extends ScrollingImagesController {
     });
   }
 
-  // @override
-  // void onInit() async {
-  //   super.onInit();
+  List<Product> getCategoryProducts(Category category) {
+    List<Product> newList = productsModel.value.allProducts.where((product) {
+      return product.productCategory == category.categoryName;
+    }).toList();
 
-  // }
+    return newList;
+  }
 }

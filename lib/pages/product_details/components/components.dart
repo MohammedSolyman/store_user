@@ -1,54 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:store_user/constants/constant.dart';
+
 import 'package:store_user/global_widgets/texts/my_big_text.dart';
 import 'package:store_user/global_widgets/texts/my_big_title.dart';
 import 'package:store_user/global_widgets/texts/my_text.dart';
 import 'package:store_user/data_types/product/product.dart';
 
 class Total extends StatelessWidget {
-  const Total({
+  const Total(
+    this.product, {
     super.key,
   });
 
+  final Product product;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        const Column(
+        Column(
           children: [
-            MyBigText('total'),
-            Text('30'),
+            const MyBigText('total'),
+            Obx(() {
+              return MyBigText(
+                  myController.purchasePageModel.value.totalPrice.toString());
+            }),
           ],
         ),
-        ElevatedButton(onPressed: () {}, child: const Text('add to cart'))
+        ElevatedButton(
+            onPressed: () {
+              myController.addToCartFunc(context, product);
+
+              print(
+                  'purchase--------------purchase--------------purchase--------------purchase--------------purchase--------------');
+              print(myController.purchaseModel.value.myPurchases.length);
+            },
+            child: const Text('add to cart'))
       ],
     );
   }
 }
 
 class Amount extends StatelessWidget {
-  const Amount({
+  const Amount(
+    this.price, {
     super.key,
   });
-
+  final int price;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
+          onTap: () {
+            myController.increaseFunc(price);
+          },
           child: Container(
             decoration: const BoxDecoration(
                 color: Colors.green, shape: BoxShape.circle),
-            child: const Icon(Icons.add),
+            child: const Icon(
+              Icons.add,
+              size: 30,
+            ),
           ),
         ),
-        const Text('0'),
+        const SizedBox(
+          width: 10,
+        ),
+        Obx(() {
+          return MyBigText(
+              myController.purchasePageModel.value.amount.toString());
+        }),
+        const SizedBox(
+          width: 10,
+        ),
         InkWell(
+          onTap: () {
+            myController.decreaseFunc(price);
+          },
           child: Container(
             decoration: const BoxDecoration(
                 color: Colors.green, shape: BoxShape.circle),
-            child: const Icon(Icons.remove),
+            child: const Icon(
+              Icons.remove,
+              size: 30,
+            ),
           ),
         ),
       ],

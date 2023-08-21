@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:store_user/constants/constant.dart';
+import 'package:store_user/data_types/product/product.dart';
 import 'package:store_user/global_widgets/texts/my_title.dart';
 import 'package:store_user/data_types/category/category.dart';
 
@@ -11,6 +12,10 @@ class CategoryTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () {
+        List<Product> dataList = myController.getCategoryProducts(category);
+        myController.goToShowCategoryProducts(dataList, category);
+      },
       child: Container(
         margin: const EdgeInsets.all(8),
         width: MediaQuery.of(context).size.width * 0.45,
@@ -26,11 +31,15 @@ class CategoryTemplate extends StatelessWidget {
               child: Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.35,
-                        height: MediaQuery.of(context).size.height * 0.18,
-                        child: Image.asset(category.categoryImage)),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.30,
+                      height: MediaQuery.of(context).size.height * 0.13,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(category.categoryImage))),
+                    ),
                     MyTitle(category.categoryName)
                   ],
                 ),
@@ -47,50 +56,9 @@ class CategoryTemplate extends StatelessWidget {
                   ]),
                   borderRadius: BorderRadius.circular(15),
                 )),
-            //  const Positioned(right: 5, top: 5, child: MyPopupMenuButton()),
           ],
         ),
       ),
     );
   }
 }
-
-// class MyPopupMenuButton extends StatelessWidget {
-//   const MyPopupMenuButton({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return PopupMenuButton(
-//       itemBuilder: (context) {
-//         PopupMenuItem<int> x = const PopupMenuItem(
-//             value: 0,
-//             child: Row(
-//               children: [
-//                 Icon(Icons.add),
-//                 SizedBox(
-//                   width: 5,
-//                 ),
-//                 Text('add product')
-//               ],
-//             ));
-//         PopupMenuItem<int> y = const PopupMenuItem(
-//             value: 1,
-//             child: Row(
-//               children: [
-//                 Icon(Icons.edit),
-//                 SizedBox(
-//                   width: 5,
-//                 ),
-//                 Text('edit product')
-//               ],
-//             ));
-//         return [x, y];
-//       },
-//       onSelected: (value) {
-//         myController.popupFunction(value, context);
-//       },
-//     );
-//   }
-// }

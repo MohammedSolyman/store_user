@@ -9,9 +9,9 @@ import 'package:store_user/pages/main_gate/main_gate.dart';
 
 /*
 
-sharedpreference was replaced with Get storage, welcome tile was fixed, forms theming were inhanced
-
-https://github.com/MohammedSolyman/store_user.git
+categories pages was fixed, product tetails page was fixed
+ 
+ git push https://github.com/MohammedSolyman/store_user.git master
 
 */
 void main() async {

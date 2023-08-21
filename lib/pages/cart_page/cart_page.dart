@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_user/constants/constant.dart';
+import 'package:store_user/global_widgets/texts/my_big_title.dart';
 import 'package:store_user/global_widgets/texts/my_title.dart';
 
 class CartPage extends StatelessWidget {
@@ -24,10 +25,8 @@ class CartPage extends StatelessWidget {
           )
         ],
       );
-
-      // return Text(' there is no purchases ..');
+    } else {
+      return MyBigTitle(' my purchases ..');
     }
-
-    return const Text(' purchases ..');
   }
 }
