@@ -9,9 +9,9 @@ class MyScrollingPages extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      child: Stack(
+      child: const Stack(
         children: [
-          const MyImages(),
+          MyImages(),
           // Positioned(
           //     bottom: 5,
           //     left: (MediaQuery.of(context).size.width - 250) * 0.5,

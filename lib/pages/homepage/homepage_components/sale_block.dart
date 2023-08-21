@@ -15,7 +15,12 @@ class SaleBlock extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const MyText('On sale'),
-            ElevatedButton(onPressed: () {}, child: const Text('view all'))
+            ElevatedButton(
+                onPressed: () {
+                  myController.productsModel.value.onSaleProducts =
+                      myController.getSaleProducts();
+                },
+                child: const Text('view all'))
           ],
         ),
         Obx(() {

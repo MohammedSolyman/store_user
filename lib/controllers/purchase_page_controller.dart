@@ -11,6 +11,30 @@ class ProductDetailPageController extends SignUpPageController {
   Rx<ProductDetailsPageModel> productDetailsPageModel =
       ProductDetailsPageModel().obs;
 
+  _clearFunc() {
+    productDetailsPageModel.update((val) {
+      val!.amount = 0;
+      val.totalPrice = 0;
+    });
+  }
+
+  _setFunc(Purchase purchase) {
+    productDetailsPageModel.update((val) {
+      val!.amount = purchase.quantity;
+      val.totalPrice = purchase.totalPrice;
+    });
+  }
+
+  deletePurchace(Purchase purchase, int index) {
+    purchaseModel.update((val) {
+      val!.myPurchases.removeAt(index);
+    });
+
+    productDetailsPageModel.update((val) {
+      val!.grandPrice = val.grandPrice - purchase.totalPrice;
+    });
+  }
+
   increaseFunc(int price) {
     productDetailsPageModel.update((val) {
       val!.amount = val.amount + 1;
@@ -28,13 +52,6 @@ class ProductDetailPageController extends SignUpPageController {
     });
   }
 
-  _clearFunc() {
-    productDetailsPageModel.update((val) {
-      val!.amount = 0;
-      val.totalPrice = 0;
-    });
-  }
-
   updateGrandPrice() {
     productDetailsPageModel.update((val) {
       val!.grandPrice = val.grandPrice + val.totalPrice;
@@ -47,14 +64,12 @@ class ProductDetailPageController extends SignUpPageController {
       String userId = FirebaseAuth.instance.currentUser!.uid;
 
       Purchase purchase = Purchase(
-          measureUnit: product.productUnit,
-          productName: product.productName,
-          purchaseTime: now,
-          quantity: productDetailsPageModel.value.amount,
-          totalPrice: productDetailsPageModel.value.totalPrice,
-          price: product.productPrice.toDouble(),
-          userId: userId,
-          productImage: product.productImage);
+        product: product,
+        purchaseTime: now,
+        quantity: productDetailsPageModel.value.amount,
+        totalPrice: productDetailsPageModel.value.totalPrice,
+        userId: userId,
+      );
 
       updateGrandPrice();
       addToPurchaseList(purchase);
@@ -68,5 +83,11 @@ class ProductDetailPageController extends SignUpPageController {
           content: 'sign in first to be able to add to your cart');
       _clearFunc();
     }
+  }
+
+  editPurchase(Purchase purchase, int index) {
+    deletePurchace(purchase, index);
+    _setFunc(purchase);
+    goToProductTetails(purchase.product);
   }
 }

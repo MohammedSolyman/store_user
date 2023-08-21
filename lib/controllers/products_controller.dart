@@ -40,4 +40,12 @@ class ProductsController extends ScrollingImagesController {
 
     return newList;
   }
+
+  List<Product> getSaleProducts() {
+    List<Product> newList = productsModel.value.allProducts.where((product) {
+      return product.isOnSale == true;
+    }).toList();
+
+    return newList;
+  }
 }

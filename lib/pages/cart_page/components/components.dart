@@ -16,17 +16,18 @@ class Purchases extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MySizedBox(),
-        MySizedBox(),
-        Total(),
-        Expanded(
-          child: ListView.builder(
-              itemCount: myController.purchaseModel.value.myPurchases.length,
-              itemBuilder: (BuildContext context, int index) {
-                return MyTile(
-                    myController.purchaseModel.value.myPurchases[index]);
-              }),
-        ),
+        const MySizedBox(),
+        const MySizedBox(),
+        const Total(),
+        Obx(() => Expanded(
+              child: ListView.builder(
+                  itemCount:
+                      myController.purchaseModel.value.myPurchases.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return MyTile(index,
+                        myController.purchaseModel.value.myPurchases[index]);
+                  }),
+            )),
       ],
     );
   }
@@ -39,11 +40,11 @@ class Total extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 80,
           child: MyBigText('total'),
         ),
-        SizedBox(
+        const SizedBox(
           width: 80,
         ),
         Obx(() => MyBigText(
@@ -55,10 +56,12 @@ class Total extends StatelessWidget {
 
 class MyTile extends StatelessWidget {
   const MyTile(
+    this.index,
     this.purchase, {
     super.key,
   });
 
+  final int index;
   final Purchase purchase;
   @override
   Widget build(BuildContext context) {
@@ -68,21 +71,29 @@ class MyTile extends StatelessWidget {
           height: 75,
           width: 75,
           decoration: BoxDecoration(
-              image:
-                  DecorationImage(image: NetworkImage(purchase.productImage))),
+              image: DecorationImage(
+                  image: NetworkImage(purchase.product.productImage))),
         ),
         Expanded(
           child: ListTile(
             isThreeLine: true,
-            title: MyBigText(purchase.productName),
+            title: MyBigText(purchase.product.productName),
             subtitle: MyText(
-                '\$${purchase.totalPrice.toString()} \n\$${purchase.price.toString()}/${purchase.measureUnit}'),
+                '\$${purchase.totalPrice.toString()} \n\$${purchase.product.productPrice.toString()}/${purchase.product.productUnit}'),
           ),
         ),
         Row(
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.edit)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.delete))
+            IconButton(
+                onPressed: () {
+                  myController.editPurchase(purchase, index);
+                },
+                icon: const Icon(Icons.edit)),
+            IconButton(
+                onPressed: () {
+                  myController.deletePurchace(purchase, index);
+                },
+                icon: const Icon(Icons.delete))
           ],
         )
       ],

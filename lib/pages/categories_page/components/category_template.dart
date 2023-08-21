@@ -14,7 +14,7 @@ class CategoryTemplate extends StatelessWidget {
     return InkWell(
       onTap: () {
         List<Product> dataList = myController.getCategoryProducts(category);
-        myController.goToShowCategoryProducts(dataList, category);
+        myController.goToProductsPage(dataList, category);
       },
       child: Container(
         margin: const EdgeInsets.all(8),
