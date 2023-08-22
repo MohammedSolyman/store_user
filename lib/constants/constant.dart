@@ -1,5 +1,5 @@
 import 'package:store_user/controllers/my_controller.dart';
-import 'package:store_user/data_types/category/category.dart';
+import 'package:store_user/data_types/category.dart';
 
 MyController myController = MyController.instance;
 

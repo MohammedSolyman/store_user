@@ -29,7 +29,9 @@ class ProfileTiles extends StatelessWidget {
               iconData: Icons.person, title: 'address', function: () {}),
           ProfileTile(iconData: Icons.person, title: 'orders', function: () {}),
           ProfileTile(
-              iconData: Icons.person, title: 'wishlist', function: () {}),
+              iconData: Icons.person,
+              title: 'wishlist',
+              function: myController.goToWishListPage),
           ProfileTile(iconData: Icons.person, title: 'viewed', function: () {}),
           const AuthenticationTile(),
           const ThemeTile()

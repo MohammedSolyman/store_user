@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_user/global_widgets/my_sized_box/my_sized_box.dart';
-import 'package:store_user/data_types/product/product.dart';
+import 'package:store_user/data_types/product.dart';
 import 'package:store_user/pages/product_details/components/components.dart';
 
 class ProductDetails extends StatelessWidget {

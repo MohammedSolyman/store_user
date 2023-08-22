@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store_user/data_types/purchase/purchase.dart';
+import 'package:store_user/data_types/purchase.dart';
 import 'package:store_user/constants/constant.dart';
 import 'package:store_user/global_widgets/my_sized_box/my_sized_box.dart';
 import 'package:store_user/global_widgets/texts/my_big_text.dart';

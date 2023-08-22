@@ -19,7 +19,6 @@ void main() async {
   await Firebase.initializeApp();
   await GetStorage.init();
   Get.put(MyController());
-
   runApp(const MainApp());
 }
 

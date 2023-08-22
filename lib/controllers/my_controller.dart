@@ -1,6 +1,6 @@
 /*
 ScrollingImagesController
-ProductsController
+DataController
 ThemeController
 PurchaseController
 NavigationController

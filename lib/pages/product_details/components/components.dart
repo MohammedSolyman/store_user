@@ -5,7 +5,7 @@ import 'package:store_user/constants/constant.dart';
 import 'package:store_user/global_widgets/texts/my_big_text.dart';
 import 'package:store_user/global_widgets/texts/my_big_title.dart';
 import 'package:store_user/global_widgets/texts/my_text.dart';
-import 'package:store_user/data_types/product/product.dart';
+import 'package:store_user/data_types/product.dart';
 
 class Total extends StatelessWidget {
   const Total(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/data_types/product/product.dart';
+import 'package:store_user/data_types/product.dart';
 import 'package:store_user/global_widgets/texts/my_title.dart';
-import 'package:store_user/data_types/category/category.dart';
+import 'package:store_user/data_types/category.dart';
 
 class CategoryTemplate extends StatelessWidget {
   const CategoryTemplate({required this.category, super.key});
@@ -14,7 +14,7 @@ class CategoryTemplate extends StatelessWidget {
     return InkWell(
       onTap: () {
         List<Product> dataList = myController.getCategoryProducts(category);
-        myController.goToProductsPage(dataList, category);
+        myController.goToProductsPage(dataList, category.categoryName);
       },
       child: Container(
         margin: const EdgeInsets.all(8),

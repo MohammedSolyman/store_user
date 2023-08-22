@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/controllers/sign_up_page_controller.dart';
-import 'package:store_user/data_types/product/product.dart';
-import 'package:store_user/data_types/purchase/purchase.dart';
+import 'package:store_user/data_types/product.dart';
+import 'package:store_user/data_types/purchase.dart';
 import 'package:store_user/global_widgets/dialoges/dialoges.dart';
 import 'package:store_user/models/product_details_page_model.dart';
 

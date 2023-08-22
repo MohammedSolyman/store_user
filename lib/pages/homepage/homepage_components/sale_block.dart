@@ -17,14 +17,17 @@ class SaleBlock extends StatelessWidget {
             const MyText('On sale'),
             ElevatedButton(
                 onPressed: () {
-                  myController.productsModel.value.onSaleProducts =
+                  myController.dataModel.value.onSaleProducts =
                       myController.getSaleProducts();
+
+                  myController.goToProductsPage(
+                      myController.dataModel.value.onSaleProducts, 'on sale');
                 },
                 child: const Text('view all'))
           ],
         ),
         Obx(() {
-          if (myController.productsModel.value.allProducts.isEmpty) {
+          if (myController.dataModel.value.allProducts.isEmpty) {
             return const MyText('there is no products');
           } else {
             return const Column(

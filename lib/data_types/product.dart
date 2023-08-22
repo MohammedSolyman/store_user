@@ -9,6 +9,7 @@ class Product {
   String productImage = "";
   int createdOn = 0;
   int lastModifiedOn = 0;
+  bool isLiked = false;
 
   Product(
       {required this.productName,

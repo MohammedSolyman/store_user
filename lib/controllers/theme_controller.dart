@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:store_user/controllers/products_controller.dart';
+import 'package:store_user/controllers/data_controller.dart';
 import 'package:store_user/models/theme_model.dart';
 
-class ThemeController extends ProductsController {
+class ThemeController extends DataController {
   Rx<ThemeModel> themeModel = ThemeModel().obs;
 
   void toggleMode(bool x) async {

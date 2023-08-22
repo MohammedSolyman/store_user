@@ -1,4 +1,4 @@
-import 'package:store_user/data_types/product/product.dart';
+import 'package:store_user/data_types/product.dart';
 
 class Purchase {
   Product product;

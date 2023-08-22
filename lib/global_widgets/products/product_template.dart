@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/data_types/product/product.dart';
+import 'package:store_user/data_types/product.dart';
 
 class ProductTemplate extends StatelessWidget {
   const ProductTemplate(this.myProduct, {super.key});
@@ -60,11 +61,22 @@ class ProductTemplate extends StatelessWidget {
                   ]),
                   borderRadius: BorderRadius.circular(15),
                 )),
-            Positioned(
-                top: 5,
-                right: 5,
-                child: IconButton(
-                    onPressed: () {}, icon: const Icon(Icons.favorite)))
+            Obx(() {
+              int index = myController.getProductIndex(myProduct);
+
+              return Positioned(
+                  top: 5,
+                  right: 5,
+                  child: IconButton(
+                      onPressed: () {
+                        myController.favoriteFunc(myProduct);
+                      },
+                      icon: Icon(Icons.favorite,
+                          color: myController
+                                  .dataModel.value.allProducts[index].isLiked
+                              ? Colors.red
+                              : Theme.of(context).textTheme.bodyLarge!.color)));
+            })
           ],
         ),
       ),

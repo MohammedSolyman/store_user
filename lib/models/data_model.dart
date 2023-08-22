@@ -1,9 +1,10 @@
-import 'package:store_user/data_types/product/product.dart';
+import 'package:store_user/data_types/product.dart';
 
-class ProductsModel {
+class DataModel {
   List<Product> allProducts = [];
   List<Product> onSaleProducts = [];
   List<Product> latestProducts = [];
   List<Product> history = [];
-  List<Product> likedProducts = [];
+
+  Set<Product> wishList = {};
 }
