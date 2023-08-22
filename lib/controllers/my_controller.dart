@@ -26,6 +26,7 @@ class MyController extends ProductDetailPageController {
     onInitTheme();
 
     await getAllProducts();
+    await getAllOrders();
     updateCurrentUser();
   }
 }

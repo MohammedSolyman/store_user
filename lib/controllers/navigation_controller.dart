@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:store_user/controllers/purchase_controller.dart';
 import 'package:store_user/data_types/product.dart';
 import 'package:store_user/pages/main_gate/main_gate.dart';
+import 'package:store_user/pages/orders_page/orders_page.dart';
 import 'package:store_user/pages/product_details/product_details.dart';
 import 'package:store_user/pages/products_page/products_page.dart';
 import 'package:store_user/pages/sign_in_page/sign_in_page.dart';
@@ -33,5 +34,9 @@ class NavigationController extends PurchaseController {
 
   void goToWishListPage() {
     goToProductsPage(dataModel.value.wishList.toList(), 'wishlist products');
+  }
+
+  void goToOrdersPage() {
+    Get.to(() => OrdersPage());
   }
 }

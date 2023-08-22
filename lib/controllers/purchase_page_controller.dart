@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/controllers/sign_up_page_controller.dart';
+import 'package:store_user/data_types/client.dart';
 import 'package:store_user/data_types/product.dart';
 import 'package:store_user/data_types/purchase.dart';
 import 'package:store_user/global_widgets/dialoges/dialoges.dart';
@@ -62,13 +63,17 @@ class ProductDetailPageController extends SignUpPageController {
     if (FirebaseAuth.instance.currentUser != null) {
       int now = DateTime.now().millisecondsSinceEpoch;
       String userId = FirebaseAuth.instance.currentUser!.uid;
+      String displayName = FirebaseAuth.instance.currentUser!.displayName!;
+
+      Client client =
+          Client(address: '', displayName: displayName, userId: userId);
 
       Purchase purchase = Purchase(
+        client: client,
         product: product,
         purchaseTime: now,
         quantity: productDetailsPageModel.value.amount,
         totalPrice: productDetailsPageModel.value.totalPrice,
-        userId: userId,
       );
 
       updateGrandPrice();
@@ -88,6 +93,6 @@ class ProductDetailPageController extends SignUpPageController {
   editPurchase(Purchase purchase, int index) {
     deletePurchace(purchase, index);
     _setFunc(purchase);
-    goToProductTetails(purchase.product);
+    goToProductTetails(purchase.product!);
   }
 }
