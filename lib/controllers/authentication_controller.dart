@@ -1,17 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store_user/controllers/navigation_controller.dart';
+import 'package:store_user/controllers/product_detail_page_controller.dart';
 import 'package:store_user/global_widgets/dialoges/dialoges.dart';
 import 'package:store_user/global_widgets/dialoges/waiting.dart';
 import 'package:store_user/models/authentication_model.dart';
 import 'package:store_user/pages/sign_in_page/sign_in_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class Authentication extends NavigationController {
+class Authentication extends ProductDetailPageController {
   Rx<AuthenticationModel> authenticationModel = AuthenticationModel().obs;
 
   updateCurrentUser() {
+    //this function will be called at the beginning of the application.
+    //if the user did not sign out, he doesn't need to re-sign in again0
+    //otherwise we will deal with a 'guest' not with current user.
+
     FirebaseAuth instance = FirebaseAuth.instance;
     User? currentUser = instance.currentUser;
 
@@ -31,6 +35,7 @@ class Authentication extends NavigationController {
     required String email,
     required String password,
   }) async {
+    //show loading progress indicator while signing up
     showWaiting();
     UserCredential credential;
 
@@ -41,11 +46,13 @@ class Authentication extends NavigationController {
       );
 
       if (FirebaseAuth.instance.currentUser != null) {
+        //successful signing up, assgin the user name to this user.
         await credential.user!.updateDisplayName(userName);
         _sendVerificationEmail();
         Get.to(() => const SignInPage());
       }
     } on FirebaseAuthException catch (e) {
+      //in case of weak password, show a warning dialoge
       if (e.code == 'weak-password') {
         Get.back();
 
@@ -55,6 +62,7 @@ class Authentication extends NavigationController {
             title: 'weak password',
             content: 'The password provided is too weak, try stronger pasword');
       } else if (e.code == 'email-already-in-use') {
+        //in case of already exist user email, show a warning dialoge
         Get.back();
 
         showMyDialoge(
@@ -64,6 +72,7 @@ class Authentication extends NavigationController {
             content: 'The account already exists for that email.');
       }
     } catch (e) {
+      //in case of an other error, show a warning dialoge
       Get.back();
       showMyDialoge(
           context: context,
@@ -128,9 +137,41 @@ class Authentication extends NavigationController {
     user!.sendEmailVerification();
   }
 
+  // signOut(BuildContext context) async {
   signOut() async {
-    await FirebaseAuth.instance.signOut();
-    updateCurrentUser();
+    try {
+      await FirebaseAuth.instance.signOut();
+      updateCurrentUser();
+
+      // clear myPurchase list
+      // clear myOrders list
+      purchaseModel.update((val) {
+        val!.myPurchases = [];
+        val.myOrders = [];
+      });
+
+      // clear address
+      authenticationModel.update((val) {
+        val!.address = '';
+      });
+      // clear wishlist
+      dataModel.update((val) {
+        val!.wishList = {};
+      });
+
+      //  clear grandPrice
+      productDetailsPageModel.update((val) {
+        val!.grandPrice = 0;
+      });
+    } catch (e) {
+      // show an error dialoge in case of any error.
+
+      // showMyDialoge(
+      //     context: context,
+      //     col: Colors.orange,
+      //     title: 'Error',
+      //     content: e.toString());
+    }
   }
 
   Future<UserCredential> signInGoogle() async {

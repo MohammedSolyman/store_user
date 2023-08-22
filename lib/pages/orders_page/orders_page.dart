@@ -16,12 +16,12 @@ class OrdersPage extends StatelessWidget {
         children: [
           const MySizedBox(),
           const MySizedBox(),
-          MyBigTitle('my orders'),
+          const MyBigTitle('my orders'),
           Divider(
               thickness: 3,
               color: Theme.of(context).textTheme.bodyLarge!.color),
           const MySizedBox(),
-          OrdersBody()
+          const OrdersBody()
         ],
       ),
     );

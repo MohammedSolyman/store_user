@@ -7,6 +7,7 @@ class Purchase {
   int quantity = 0;
   double totalPrice = 0;
   int purchaseTime = 0;
+  String userId = '';
 
   Purchase({
     required this.client,
@@ -14,7 +15,9 @@ class Purchase {
     required this.quantity,
     required this.totalPrice,
     required this.purchaseTime,
-  });
+  }) {
+    userId = client!.userId;
+  }
 
   Purchase.fromMap(Map<String, dynamic> map) {
     client = Client.fromMap(map['client']);
@@ -22,6 +25,7 @@ class Purchase {
     quantity = map['quantity'];
     totalPrice = map['totalPrice'];
     purchaseTime = map['purchaseTime'];
+    userId = client!.userId;
   }
 
   Map<String, dynamic> toMap() {
@@ -31,6 +35,7 @@ class Purchase {
       'quantity': quantity,
       'totalPrice': totalPrice,
       'purchaseTime': purchaseTime,
+      'userId': client!.userId
     };
     return m;
   }

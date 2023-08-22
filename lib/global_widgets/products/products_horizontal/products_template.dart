@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/global_widgets/products/product_template.dart';
 import 'package:store_user/data_types/product.dart';
+import 'package:store_user/global_widgets/products/products_horizontal/product_template.dart';
 
 class ProductsTemplate extends StatelessWidget {
   const ProductsTemplate(

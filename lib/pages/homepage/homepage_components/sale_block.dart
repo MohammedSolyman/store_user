@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/global_widgets/products/products_template.dart';
+import 'package:store_user/global_widgets/products/products_horizontal/products_template.dart';
+
 import 'package:store_user/global_widgets/texts/my_text.dart';
 
 class SaleBlock extends StatelessWidget {

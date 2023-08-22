@@ -5,7 +5,6 @@ import 'package:store_user/global_widgets/texts/my_text.dart';
 Future<void> showMyDialoge(
     {required BuildContext context,
     required Color col,
-    required,
     required String title,
     required content}) async {
   await Get.defaultDialog(

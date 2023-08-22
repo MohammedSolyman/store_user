@@ -30,7 +30,7 @@ class ProductTemplate extends StatelessWidget {
                     height: 110,
                     width: 95,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
+                        //  border: Border.all(color: Colors.black),
                         image: DecorationImage(
                             image: NetworkImage(myProduct.productImage))),
                   ),

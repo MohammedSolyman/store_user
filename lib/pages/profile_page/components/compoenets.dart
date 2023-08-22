@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:store_user/constants/constant.dart';
 import 'package:store_user/global_widgets/texts/my_big_text.dart';
 import 'package:store_user/global_widgets/texts/my_big_title.dart';
+import 'package:store_user/pages/profile_page/components/dialoge.dart';
 
 class WelcomeTile extends StatelessWidget {
   const WelcomeTile({
@@ -26,13 +27,22 @@ class ProfileTiles extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           ProfileTile(
-              iconData: Icons.person, title: 'address', function: () {}),
+              iconData: Icons.directions,
+              title: 'address',
+              function: () async {
+                await showAddressDialoge(context: context);
+              }),
+
           ProfileTile(
-              iconData: Icons.person,
-              title: 'orders',
-              function: myController.goToOrdersPage),
+              iconData: Icons.attach_money_outlined,
+              title: 'my orders',
+              function: () async {
+                await myController.getAllOrders();
+                myController.goToOrdersPage();
+              }),
+
           ProfileTile(
-              iconData: Icons.person,
+              iconData: Icons.favorite,
               title: 'wishlist',
               function: myController.goToWishListPage),
           // ProfileTile(iconData: Icons.person, title: 'viewed', function: () {}),
@@ -97,6 +107,40 @@ class ProfileTile extends StatelessWidget {
         IconButton(
             onPressed: () {
               function();
+            },
+            icon: const Icon(
+              Icons.arrow_forward_ios,
+              size: 30,
+            ))
+      ],
+    );
+  }
+}
+
+class OrderTile extends StatelessWidget {
+  const OrderTile({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Row(
+          children: [
+            Icon(
+              Icons.monetization_on_rounded,
+              size: 30,
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            MyBigText('orders'),
+          ],
+        ),
+        IconButton(
+            onPressed: () async {
+              await myController.getAllOrders();
+              myController.goToOrdersPage();
             },
             icon: const Icon(
               Icons.arrow_forward_ios,

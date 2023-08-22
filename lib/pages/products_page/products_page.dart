@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:store_user/data_types/product.dart';
 import 'package:store_user/global_widgets/my_sized_box/my_sized_box.dart';
-import 'package:store_user/global_widgets/products/products_grid.dart';
+import 'package:store_user/global_widgets/products/grid_products/products_grid.dart';
 import 'package:store_user/global_widgets/texts/my_big_title.dart';
 
 class ProductsPage extends StatelessWidget {

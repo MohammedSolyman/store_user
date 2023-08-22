@@ -1,46 +1,57 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:store_user/controllers/theme_controller.dart';
 import 'package:store_user/data_types/purchase.dart';
 import 'package:store_user/models/purchase_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:store_user/pages/orders_page/orders_page.dart';
 
 class PurchaseController extends ThemeController {
   Rx<PurchaseModel> purchaseModel = PurchaseModel().obs;
 
-  addToPurchaseList(Purchase purchase) {
-    purchaseModel.update((val) {
-      val!.myPurchases.add(purchase);
-    });
-  }
-
-  buy() async {
+  Future<void> buy() async {
+    // send this purchase list to firebase store
     CollectionReference<Map<String, dynamic>> colRef =
         FirebaseFirestore.instance.collection('orders');
     purchaseModel.value.myPurchases.forEach((element) {
       colRef.add(element.toMap());
     });
 
-    await getAllOrders();
+    // clear purchase list
+    purchaseModel.update((val) {
+      val!.myPurchases = [];
+    });
+
+    // refresh myOrders list
+    //await getAllOrders();
+
+    // go to orders page
+    Get.off(() => const OrdersPage());
   }
 
   getAllOrders() async {
-    CollectionReference<Map<String, dynamic>> colRef =
-        FirebaseFirestore.instance.collection('orders');
-    QuerySnapshot<Map<String, dynamic>> querySS = await colRef.get();
-    List<QueryDocumentSnapshot<Map<String, dynamic>>> mylist = querySS.docs;
-    List<Purchase> x = [];
+    // fetch myOrders from firestore for this user only if there is a user already
+    if (FirebaseAuth.instance.currentUser != null) {
+      String uId = FirebaseAuth.instance.currentUser!.uid;
 
-    mylist.forEach((QueryDocumentSnapshot<Map<String, dynamic>> element) {
-      Map<String, dynamic> m = element.data();
-      Purchase p = Purchase.fromMap(m);
-      x.add(p);
-    });
+      CollectionReference<Map<String, dynamic>> colRef =
+          FirebaseFirestore.instance.collection('orders');
 
-    purchaseModel.update((val) {
-      val!.myOrders = x;
-    });
-    print('lllllllllllllllllllllllllllllllllllllll');
-    print('lllllllllllllllllllllllllllllllllllllll');
-    print(purchaseModel.value.myOrders.length);
+      Query<Map<String, dynamic>> q = colRef.where('userId', isEqualTo: uId);
+
+      QuerySnapshot<Map<String, dynamic>> querySS = await q.get();
+      List<QueryDocumentSnapshot<Map<String, dynamic>>> mylist = querySS.docs;
+      List<Purchase> x = [];
+
+      mylist.forEach((QueryDocumentSnapshot<Map<String, dynamic>> element) {
+        Map<String, dynamic> m = element.data();
+        Purchase p = Purchase.fromMap(m);
+        x.add(p);
+      });
+
+      purchaseModel.update((val) {
+        val!.myOrders = x;
+      });
+    }
   }
 }

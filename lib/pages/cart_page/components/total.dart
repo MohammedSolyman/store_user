@@ -17,7 +17,7 @@ class Total extends StatelessWidget {
             onPressed: () async {
               await myController.buy();
             },
-            child: MyBigText('buy'))
+            child: const MyBigText('buy'))
       ],
     );
   }

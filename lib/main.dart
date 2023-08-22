@@ -8,12 +8,9 @@ import 'package:store_user/controllers/my_controller.dart';
 import 'package:store_user/pages/main_gate/main_gate.dart';
 
 /*
-
-
- 
  git push https://github.com/MohammedSolyman/store_user.git master
-
 */
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

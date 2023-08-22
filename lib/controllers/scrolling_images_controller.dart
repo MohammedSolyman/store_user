@@ -47,10 +47,10 @@ class ScrollingImagesController extends GetxController {
     }
   }
 
-  restartScrolling() {
-    _stopScrolling();
-    _startScrolling();
-  }
+  // restartScrolling() {
+  //   _stopScrolling();
+  //   _startScrolling();
+  // }
 
   @override
   void onInit() {
@@ -58,10 +58,9 @@ class ScrollingImagesController extends GetxController {
     _startScrolling();
   }
 
-  // @override
-  // void onClose() {
-  //   print('-----------------dispose called ---------------------------------');
-  //   super.onClose();
-  //   _stopScrolling();
-  // }
+  @override
+  void onClose() {
+    super.onClose();
+    _stopScrolling();
+  }
 }

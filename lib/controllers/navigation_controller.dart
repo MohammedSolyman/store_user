@@ -37,6 +37,6 @@ class NavigationController extends PurchaseController {
   }
 
   void goToOrdersPage() {
-    Get.to(() => OrdersPage());
+    Get.to(() => const OrdersPage());
   }
 }

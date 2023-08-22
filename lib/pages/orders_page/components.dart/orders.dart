@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/global_widgets/my_sized_box/my_sized_box.dart';
-import 'package:store_user/pages/cart_page/components/purchase_tile.dart';
-import 'package:store_user/pages/cart_page/components/total.dart';
 import 'package:store_user/pages/orders_page/components.dart/order_tile.dart';
 
 class Orders extends StatelessWidget {

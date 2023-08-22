@@ -18,8 +18,8 @@ class PurchaseTile extends StatelessWidget {
   Widget build(BuildContext context) {
     DateTime datetime =
         DateTime.fromMillisecondsSinceEpoch(purchase.purchaseTime);
-    String Stringtime = datetime.toString();
-    String time = Stringtime.split(' ').first;
+    String stringtime = datetime.toString();
+    String time = stringtime.split(' ').first;
 
     return Row(
       children: [
