@@ -5,6 +5,8 @@ import 'package:store_user/controllers/product_detail_page_controller.dart';
 import 'package:store_user/global_widgets/dialoges/dialoges.dart';
 import 'package:store_user/global_widgets/dialoges/waiting.dart';
 import 'package:store_user/models/authentication_model.dart';
+import 'package:store_user/pages/cart_page/cart_page.dart';
+import 'package:store_user/pages/main_gate/main_gate.dart';
 import 'package:store_user/pages/sign_in_page/sign_in_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -49,7 +51,7 @@ class Authentication extends ProductDetailPageController {
         //successful signing up, assgin the user name to this user.
         await credential.user!.updateDisplayName(userName);
         _sendVerificationEmail();
-        Get.to(() => const SignInPage());
+        Get.offAll(() => const SignInPage());
       }
     } on FirebaseAuthException catch (e) {
       //in case of weak password, show a warning dialoge
@@ -100,7 +102,9 @@ class Authentication extends ProductDetailPageController {
       if (credential.user!.emailVerified) {
         Get.back();
 
-        goToCartPage();
+        // goToCartPage();
+        //  Get.offAll(() => const CartPage());
+        Get.offAll(() => const MainGate(index: 2));
       } else {
         Get.back();
 

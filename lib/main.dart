@@ -8,6 +8,7 @@ import 'package:store_user/controllers/my_controller.dart';
 import 'package:store_user/pages/main_gate/main_gate.dart';
 
 /*
+add (do you want to exit app) feature. WillPopScope widget
  git push https://github.com/MohammedSolyman/store_user.git master
 */
 
