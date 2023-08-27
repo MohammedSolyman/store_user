@@ -13,9 +13,9 @@ class PurchaseController extends ThemeController {
     // send this purchase list to firebase store
     CollectionReference<Map<String, dynamic>> colRef =
         FirebaseFirestore.instance.collection('orders');
-    purchaseModel.value.myPurchases.forEach((element) {
+    for (var element in purchaseModel.value.myPurchases) {
       colRef.add(element.toMap());
-    });
+    }
 
     // clear purchase list
     purchaseModel.update((val) {
@@ -23,13 +23,13 @@ class PurchaseController extends ThemeController {
     });
 
     // refresh myOrders list
-    //await getAllOrders();
+    await getAllOrders();
 
     // go to orders page
     Get.off(() => const OrdersPage());
   }
 
-  getAllOrders() async {
+  Future<void> getAllOrders() async {
     // fetch myOrders from firestore for this user only if there is a user already
     if (FirebaseAuth.instance.currentUser != null) {
       String uId = FirebaseAuth.instance.currentUser!.uid;
@@ -43,11 +43,11 @@ class PurchaseController extends ThemeController {
       List<QueryDocumentSnapshot<Map<String, dynamic>>> mylist = querySS.docs;
       List<Purchase> x = [];
 
-      mylist.forEach((QueryDocumentSnapshot<Map<String, dynamic>> element) {
+      for (var element in mylist) {
         Map<String, dynamic> m = element.data();
         Purchase p = Purchase.fromMap(m);
         x.add(p);
-      });
+      }
 
       purchaseModel.update((val) {
         val!.myOrders = x;

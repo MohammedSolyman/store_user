@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/controllers/purchase_controller.dart';
 import 'package:store_user/data_types/product.dart';
@@ -38,5 +39,22 @@ class NavigationController extends PurchaseController {
 
   void goToOrdersPage() {
     Get.to(() => const OrdersPage());
+  }
+
+  Future<bool> onWillPop() async {
+    return await Get.defaultDialog(
+        content: const Text('do you want to exit the app'),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                return Get.back<bool>(result: false);
+              },
+              child: const Text('no')),
+          ElevatedButton(
+              onPressed: () {
+                return Get.back<bool>(result: true);
+              },
+              child: const Text('yes')),
+        ]);
   }
 }

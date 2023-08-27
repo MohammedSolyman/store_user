@@ -5,7 +5,6 @@ import 'package:store_user/controllers/product_detail_page_controller.dart';
 import 'package:store_user/global_widgets/dialoges/dialoges.dart';
 import 'package:store_user/global_widgets/dialoges/waiting.dart';
 import 'package:store_user/models/authentication_model.dart';
-import 'package:store_user/pages/cart_page/cart_page.dart';
 import 'package:store_user/pages/main_gate/main_gate.dart';
 import 'package:store_user/pages/sign_in_page/sign_in_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';

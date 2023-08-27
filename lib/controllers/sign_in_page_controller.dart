@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/controllers/authentication_controller.dart';
 import 'package:store_user/models/sign_in__page_model.dart';
-import 'package:store_user/pages/cart_page/cart_page.dart';
 import 'package:store_user/pages/main_gate/main_gate.dart';
 
 class SignInPageController extends Authentication {
