@@ -8,7 +8,8 @@ import 'package:store_user/models/data_model.dart';
 class DataController extends ScrollingImagesController {
   Rx<DataModel> dataModel = DataModel().obs;
 
-  getAllProducts() async {
+  Future<void> _fetchProducts() async {
+    // fetching and updating all products
     FirebaseFirestore instance = FirebaseFirestore.instance;
     CollectionReference<Map<String, dynamic>> colRef =
         instance.collection('products');
@@ -16,34 +17,72 @@ class DataController extends ScrollingImagesController {
     QuerySnapshot<Map<String, dynamic>> querySS = await colRef.get();
 
     List<QueryDocumentSnapshot<Map<String, dynamic>>> myList = querySS.docs;
-    List<Product> x = [];
+    List<Product> allProducts = [];
 
     for (var element in myList) {
       Map<String, dynamic> myMap = element.data();
       Product myProduct = Product.fromMap(myMap);
-      x.add(myProduct);
+      allProducts.add(myProduct);
+    }
+    dataModel.update((val) {
+      val!.allProducts = allProducts;
+    });
+  }
+
+  void _updateOnSaleProducts() {
+    // 1. Extracting on sale products list.
+    List<Product> onSaleProducts = dataModel.value.allProducts.where((product) {
+      return product.isOnSale == true;
+    }).toList();
+
+    // 2. Extracting on sale products short list (up to 4 products only).
+    List<Product> onSaleProductsShort = onSaleProducts;
+
+    if (onSaleProductsShort.length >= 5) {
+      onSaleProductsShort = onSaleProductsShort.sublist(0, 4);
     }
 
     dataModel.update((val) {
-      val!.allProducts = x;
-
-      val.onSaleProducts = x;
-      val.latestProducts = x;
-      val.latestProducts = val.latestProducts.sublist(0, 2);
+      val!.onSaleProducts = onSaleProducts;
+      val.onSaleProductsShort = onSaleProductsShort;
     });
+  }
+
+  void _updateLatestProducts() {
+    //1. Extracting latest products (up to 10 products)
+    List<Product> latestProducts = dataModel.value.allProducts;
+
+    latestProducts.sort(
+      (a, b) {
+        return a.createdOn.compareTo(b.createdOn);
+      },
+    );
+
+    if (latestProducts.length >= 11) {
+      latestProducts = latestProducts.sublist(0, 10);
+    }
+
+    //2. Extracting latest products (shortlist) (up to 4 products)
+    List<Product> latestProductsShort = latestProducts;
+
+    if (latestProductsShort.length >= 5) {
+      latestProductsShort = latestProductsShort.sublist(0, 4);
+    }
+    dataModel.update((val) {
+      val!.latestProducts = latestProducts;
+      val.latestProductsShort = latestProductsShort;
+    });
+  }
+
+  Future<void> getAllProducts() async {
+    await _fetchProducts();
+    _updateOnSaleProducts();
+    _updateLatestProducts();
   }
 
   List<Product> getCategoryProducts(Category category) {
     List<Product> newList = dataModel.value.allProducts.where((product) {
       return product.productCategory == category.categoryName;
-    }).toList();
-
-    return newList;
-  }
-
-  List<Product> getSaleProducts() {
-    List<Product> newList = dataModel.value.allProducts.where((product) {
-      return product.isOnSale == true;
     }).toList();
 
     return newList;

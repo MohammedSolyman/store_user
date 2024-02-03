@@ -12,22 +12,31 @@ class LatestProductsBLock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const MySizedBox(),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            MyText('Latest products'),
-            //   ElevatedButton(onPressed: () {}, child: const Text('view all'))
-          ],
+        Container(
+          decoration: BoxDecoration(
+              color: Theme.of(context).primaryColorDark,
+              borderRadius: BorderRadius.circular(5)),
+          margin: const EdgeInsets.all(3),
+          padding: const EdgeInsets.all(3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const MyText('Latest products'),
+              ElevatedButton(
+                  onPressed: () {
+                    myController.goToProductsPage(
+                        myController.dataModel.value.latestProducts,
+                        'latest products');
+                  },
+                  child: const Text('view all'))
+            ],
+          ),
         ),
-        const MySizedBox(),
         Obx(() {
-          if (myController.dataModel.value.allProducts.isEmpty) {
-            return const MyText('there is no products');
+          if (myController.dataModel.value.latestProductsShort.isEmpty) {
+            return const MyText('there are no products');
           } else {
-            return const Column(
-              children: [SaleProductsTemplate(countPerLine: 1)],
-            );
+            return const LatestProductsTemplate(countPerLine: 1);
           }
         })
       ],

@@ -16,7 +16,8 @@ class MyThemeData {
             fontSize: 30,
             color: MyColors.text1,
           )),
-      primaryColor: MyColors.background1);
+      primaryColor: MyColors.background1,
+      primaryColorDark: MyColors.borders1);
 
   static final ThemeData dark = ThemeData(
       elevatedButtonTheme: const ElevatedButtonThemeData(
@@ -32,5 +33,6 @@ class MyThemeData {
             fontSize: 30,
             color: MyColors.text2,
           )),
-      primaryColor: MyColors.background2);
+      primaryColor: MyColors.background2,
+      primaryColorDark: MyColors.borders2);
 }

@@ -4,7 +4,11 @@ class DataModel {
   List<Product> allProducts = [];
   List<Product> onSaleProducts = [];
   List<Product> latestProducts = [];
-  List<Product> history = [];
+
+// products which appear in the home page (4 products only in each
+// category.)
+  List<Product> onSaleProductsShort = [];
+  List<Product> latestProductsShort = [];
 
   Set<Product> wishList = {};
 }

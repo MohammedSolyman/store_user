@@ -25,6 +25,7 @@ class MyController extends SignUpPageController {
     onInitTheme();
     await getAllProducts();
     await getAllOrders();
+    // getLatestProducts();
     updateCurrentUser();
   }
 }

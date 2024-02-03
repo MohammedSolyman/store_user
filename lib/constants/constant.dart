@@ -17,11 +17,38 @@ class Unit {
 
 //categories data
 class MyCategories {
-  static final Category _grains = Category('grains', 'assets/store.png');
-  static final Category _fruits = Category('fruits', 'assets/store.png');
-  static final Category _dairy = Category('dairy', 'assets/store.png');
-  static final Category _vegetables =
-      Category('vegetables', 'assets/store.png');
+  static final Category bakery = Category('Bakery', 'assets/store.png');
+  static final Category beverages = Category('Beverages', 'assets/store.png');
+  static final Category cannedGoods =
+      Category('Canned Goods', 'assets/store.png');
+  static final Category cleaners = Category('Cleaners', 'assets/store.png');
+  static final Category dairy = Category('Dairy', 'assets/store.png');
+  static final Category dryGoods = Category('Dry Goods', 'assets/store.png');
+  static final Category frozen = Category('Frozen', 'assets/store.png');
+  static final Category fruits = Category('Fruits', 'assets/store.png');
+  static final Category grains = Category('Grains', 'assets/store.png');
+  static final Category meat = Category('Meat', 'assets/store.png');
+  static final Category paperGoods =
+      Category('Paper Goods', 'assets/store.png');
+  static final Category personalCare =
+      Category('Personal Care', 'assets/store.png');
+  static final Category vegetables = Category('Vegetables', 'assets/store.png');
+  static final Category other = Category('Other', 'assets/store.png');
 
-  static List<Category> categoryList = [_dairy, _fruits, _vegetables, _grains];
+  static List<Category> categoryList = [
+    bakery,
+    beverages,
+    cannedGoods,
+    cleaners,
+    dairy,
+    dryGoods,
+    frozen,
+    fruits,
+    grains,
+    meat,
+    paperGoods,
+    personalCare,
+    vegetables,
+    other,
+  ];
 }

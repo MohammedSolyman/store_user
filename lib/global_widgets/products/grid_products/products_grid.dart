@@ -9,7 +9,7 @@ class ProductsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (dataList.isEmpty) {
-      return const MyText('there is no products yet');
+      return const MyText('there are no products yet');
     } else {
       return Expanded(
         child: GridView.builder(

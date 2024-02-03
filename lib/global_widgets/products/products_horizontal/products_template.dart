@@ -14,7 +14,7 @@ class ProductsTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return dataList.isEmpty
-        ? const Text('there is no products')
+        ? const Text('there are no products')
         : SizedBox(
             height: 175,
             child: GridView.builder(
@@ -40,9 +40,12 @@ class SaleProductsTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return ProductsTemplate(
-        countPerLine: countPerLine,
-        dataList: myController.dataModel.value.onSaleProducts,
+      return Padding(
+        padding: const EdgeInsets.only(left: 3),
+        child: ProductsTemplate(
+          countPerLine: countPerLine,
+          dataList: myController.dataModel.value.onSaleProductsShort,
+        ),
       );
     });
   }
@@ -55,9 +58,12 @@ class LatestProductsTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      return ProductsTemplate(
-        countPerLine: countPerLine,
-        dataList: myController.dataModel.value.latestProducts,
+      return Padding(
+        padding: const EdgeInsets.only(left: 3),
+        child: ProductsTemplate(
+          countPerLine: countPerLine,
+          dataList: myController.dataModel.value.latestProductsShort,
+        ),
       );
     });
   }

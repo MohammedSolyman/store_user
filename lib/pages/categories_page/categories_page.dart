@@ -12,7 +12,7 @@ class CategoriesPage extends StatelessWidget {
         const SizedBox(
           height: 35,
         ),
-        CategoriesTemplate(dataList: MyCategories.categoryList)
+        CategoriesTemplate()
       ],
     );
   }

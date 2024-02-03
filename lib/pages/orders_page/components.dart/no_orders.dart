@@ -19,7 +19,7 @@ class NoOrders extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: MyTitle(
-                    'There is no items yet, go shopping and buy your favoutire products '),
+                    'there are no items yet, go shopping and buy your favoutire products '),
               ),
             ),
           )
