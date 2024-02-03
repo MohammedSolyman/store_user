@@ -3,6 +3,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:store_user/constants/constant.dart';
 import 'package:store_user/global_widgets/texts/my_big_text.dart';
 import 'package:store_user/global_widgets/texts/my_big_title.dart';
+import 'package:store_user/global_widgets/texts/my_title.dart';
 import 'package:store_user/pages/profile_page/components/dialoge.dart';
 
 class WelcomeTile extends StatelessWidget {
@@ -24,7 +25,7 @@ class ProfileTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //   mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ProfileTile(
               iconData: Icons.directions,
@@ -101,7 +102,7 @@ class ProfileTile extends StatelessWidget {
             const SizedBox(
               width: 20,
             ),
-            MyBigText(title),
+            MyTitle(title),
           ],
         ),
         IconButton(
@@ -168,7 +169,7 @@ class ThemeTile extends StatelessWidget {
             SizedBox(
               width: 20,
             ),
-            MyBigText('theme'),
+            MyTitle('theme'),
           ],
         ),
         Obx(() {

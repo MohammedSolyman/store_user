@@ -26,8 +26,9 @@ class OrderTile extends StatelessWidget {
         Expanded(
           child: ListTile(
             isThreeLine: true,
-            title: MyBigText(purchase.product!.productName),
-            subtitle: MyText('\$${purchase.totalPrice}  \n${time.toString()}'),
+            title: MyTextHead(purchase.product!.productName),
+            subtitle: MyText(
+                "total price:  ${purchase.totalPrice} \ndate: ${time.toString().split(' ')[0]} \ntime: ${time.toString().split(' ')[1].split('.')[0]}"),
           ),
         ),
       ],
