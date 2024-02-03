@@ -9,15 +9,14 @@ class MyScrollingPages extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      child: const Stack(
+      child: Stack(
         children: [
-          MyImages(),
-          // Positioned(
-          //     bottom: 5,
-          //     left: (MediaQuery.of(context).size.width - 250) * 0.5,
-          //     width: 250,
-          //     child: const MyDots()
-          //     )
+          const MyImages(),
+          Positioned(
+              bottom: 5,
+              left: (MediaQuery.of(context).size.width - 250) * 0.5,
+              width: 250,
+              child: const MyDots())
         ],
       ),
     );
@@ -31,13 +30,13 @@ class MyImages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.30,
-        decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+        // decoration: BoxDecoration(border: Border.all(color: Colors.black)),
         child: PageView.builder(
           controller: myController.scrollingImagesModel.value.pageController,
-          itemCount: 10,
+          itemCount: Images.images.length,
           onPageChanged: (value) {
             myController.updateCurrentPage(value);
           },

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/models/scrolling_images_model.dart';
@@ -25,42 +23,42 @@ class ScrollingImagesController extends GetxController {
     }
   }
 
-  _startScrolling() {
-    int x = 10;
-    int y = 10;
-    int z;
+  // _startScrolling() {
+  //   int x = 10;
+  //   int y = 10;
+  //   int z;
 
-    scrollingImagesModel.update((val) {
-      val!.timer = Timer.periodic(const Duration(seconds: 2), (timer) {
-        z = y % x;
-        scrollingImagesModel.value.pageController.jumpToPage(z);
-        y++;
-      });
-    });
-  }
+  //   scrollingImagesModel.update((val) {
+  //     val!.timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+  //       z = y % x;
+  //       scrollingImagesModel.value.pageController.jumpToPage(z);
+  //       y++;
+  //     });
+  //   });
+  // }
 
-  _stopScrolling() {
-    if (scrollingImagesModel.value.timer != null) {
-      scrollingImagesModel.update((val) {
-        val!.timer!.cancel();
-      });
-    }
-  }
+  // _stopScrolling() {
+  //   if (scrollingImagesModel.value.timer != null) {
+  //     scrollingImagesModel.update((val) {
+  //       val!.timer!.cancel();
+  //     });
+  //   }
+  // }
 
   // restartScrolling() {
   //   _stopScrolling();
   //   _startScrolling();
   // }
 
-  @override
-  void onInit() {
-    super.onInit();
-    _startScrolling();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   _startScrolling();
+  // }
 
-  @override
-  void onClose() {
-    super.onClose();
-    _stopScrolling();
-  }
+  // @override
+  // void onClose() {
+  //   super.onClose();
+  //   _stopScrolling();
+  // }
 }

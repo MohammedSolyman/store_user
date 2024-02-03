@@ -21,7 +21,7 @@ class SaleBlock extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const MyText('On sale'),
+              const MyTextHead('On sale'),
               ElevatedButton(
                   onPressed: () {
                     myController.goToProductsPage(

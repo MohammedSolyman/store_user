@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:store_user/constants/constant.dart';
-import 'package:store_user/global_widgets/my_sized_box/my_sized_box.dart';
 import 'package:store_user/global_widgets/products/products_horizontal/products_template.dart';
 
 import 'package:store_user/global_widgets/texts/my_text.dart';
@@ -21,7 +20,7 @@ class LatestProductsBLock extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const MyText('Latest products'),
+              const MyTextHead('Latest products'),
               ElevatedButton(
                   onPressed: () {
                     myController.goToProductsPage(

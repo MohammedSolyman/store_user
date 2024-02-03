@@ -30,7 +30,6 @@ class PurchaseController extends ThemeController {
   }
 
   Future<void> getAllOrders() async {
-    print('starrt of getAllOrders -------------------');
     // fetch myOrders from firestore for this user only if there is a user already
     if (FirebaseAuth.instance.currentUser != null) {
       String uId = FirebaseAuth.instance.currentUser!.uid;
@@ -54,6 +53,5 @@ class PurchaseController extends ThemeController {
         val!.myOrders = x;
       });
     }
-    print('end of getAllOrders -------------------');
   }
 }

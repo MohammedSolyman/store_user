@@ -4,6 +4,6 @@ import 'package:flutter/material.dart';
 class ScrollingImagesModel {
   PageController pageController = PageController();
   Timer? timer;
-  int? currenImage;
+  int currenImage = 0;
   Color dotColor = Colors.yellow;
 }

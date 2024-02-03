@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:store_user/data_types/purchase.dart';
-import 'package:store_user/global_widgets/texts/my_big_text.dart';
 import 'package:store_user/global_widgets/texts/my_text.dart';
 
 class OrderTile extends StatelessWidget {

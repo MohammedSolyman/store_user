@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:store_user/constants/constant.dart';
 import 'package:store_user/pages/categories_page/components/categories_template.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -7,9 +6,9 @@ class CategoriesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 35,
         ),
         CategoriesTemplate()
